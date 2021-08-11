@@ -1,9 +1,9 @@
 import React, { useState }  from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-import ContactUs from './ContactUs';
+// import ContactUs from './ContactUs';
 import '../css/navbar.css'
-import Auth from '../utils/auth';
+// import Auth from '../utils/auth';
 
 const BottomNav = () =>{
     const [showModal, setShowModal] = useState(false);

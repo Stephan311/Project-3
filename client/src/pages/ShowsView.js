@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, Container } from 'react-bootstrap';
-import '../css/homeview.css'
+// import '../css/homeview.css'
 
 const ShowsView = () => {
 

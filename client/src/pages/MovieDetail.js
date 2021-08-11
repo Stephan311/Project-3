@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
-//var axios = require("axios").default;
 import axios from 'axios';
 import '../css/search.css'
 import Auth from '../utils/auth';

@@ -14,7 +14,7 @@ import SearchMovies from './pages/SearchMovies';
 import MovieDetail from './pages/MovieDetail';
 import SavedMovies from './pages/SavedMovies';
 import Navbar from './components/Navbar';
-import HomeView from './pages/HomeView';
+//import  from './pages/HomeView';
 import MovieView from './pages/MovieView';
 import ShowsView from './pages/ShowsView';
 import Dashboard from './pages/Dashboard';
@@ -55,7 +55,6 @@ function App() {
     <ApolloProvider client={client}>
     <Router>
         <Navbar />
-       {/* <HomeView/> */}
        
         <Switch>
 
