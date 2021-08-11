@@ -1,5 +1,4 @@
 import React from 'react';
-/// new lines next
 import {
   ApolloClient,
   InMemoryCache,
@@ -7,25 +6,18 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// new lines end
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SearchMovies from './pages/SearchMovies';
 import MovieDetail from './pages/MovieDetail';
 import SavedMovies from './pages/SavedMovies';
 import Navbar from './components/Navbar';
-import HomeView from './pages/HomeView';
 import MovieView from './pages/MovieView';
 import ShowsView from './pages/ShowsView';
 import Dashboard from './pages/Dashboard';
-
 import SearchesPage from './pages/SearchesPage';
-// import BottomNav from './components/BottomNav';
 import Watched from './pages/Watched';
 import Wishlist from './pages/Wishlist';
 
-// new lines next
-// Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -48,49 +40,47 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-// new lines end
 
 function App() {
   return (
     <ApolloProvider client={client}>
-    <Router>
+      <Router>
         <Navbar />
-       <HomeView/>
-       
+
         <Switch>
 
 
           <Route exact path='/' component={SearchMovies} />
-        
+
 
           <Route path='/detail/:movieId' component={MovieDetail} />
 
           <Route path="/" exact>
-       
-          <Dashboard />
+
+            <Dashboard />
           </Route>
 
           <Route path="/saved" exact>
-          <SavedMovies />
+            <SavedMovies />
           </Route>
 
 
           <Route path="/movies" exact>
-          <SearchMovies />
+            <SearchMovies />
           </Route>
 
           <Route path="/watched" exact>
-          <Watched />
+            <Watched />
           </Route>
 
           <Route path="/wishlist" exact>
-          <Wishlist />
+            <Wishlist />
           </Route>
         </Switch>
 
-        
+
         {/* <BottomNav/> */}
-    </Router>
+      </Router>
     </ApolloProvider>
   );
 }

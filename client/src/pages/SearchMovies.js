@@ -1,37 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom"; 
-
+import { Link } from "react-router-dom";
+import { Carousel } from 'react-bootstrap';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
-//var axios = require("axios").default;
-//import axios from 'axios';
 import '../css/search.css'
 import Auth from '../utils/auth';
 import { searchMovies } from '../utils/API';
 import { saveMovieIds, getSavedMovieIds } from '../utils/localStorage';
-
-// new lines
-// Import the `useMutation()` hook from Apollo Client
 import { useMutation } from '@apollo/client';
-// Import the GraphQL mutation
 import { SAVE_MOVIE } from '../utils/mutations';
-// new lines end
+
 
 const SearchMovies = () => {
   // create state for holding returned google api data
   const [searchedMovies, setSearchedMovies] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
-
+  const [searchedInput, setSearchedInput] = useState('');
   // create state to hold saved MovieId values
   const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
-  //new lines
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_PROFILE mutation
   const [saveMovie] = useMutation(SAVE_MOVIE);
-  // new lines end
 
-  // set up useEffect hook to save `savedMovieIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     return () => saveMovieIds(savedMovieIds);
   });
@@ -45,45 +35,28 @@ const SearchMovies = () => {
     }
 
     try {
-     
-    const response = await searchMovies(searchInput)
 
-    if (!response.ok) {
-      throw new Error('oh crap')
-    }
-    //const data = await response.json();
-  //  console.log(response);
-    const { Search } = await response.json();   /// "Search" is the inner object inside the returned respobse object
-  //  console.log(Search)
-    
+      const response = await searchMovies(searchInput)
 
-    const movieData = Search.map((movie) => ({
-      movieId: movie.imdbID,
-      type : movie.Type,
-     // genre : movie.Genre || '',
-     // rated: movie.Rated,
-      title: movie.Title,
-      //language : movie.Language || 'English',
-      //runtime : movie.Runtime || 1,
-      //released : movie.Released,
-      // year: Number(movie.Year),
-      year: movie.Year,
-      //director: movie.Director || '',
-      //writer: movie.Writer || '',
-      //actors : movie.Actors,
-      //plot : movie.Plot,
-      //country : movie.Country,
-      //awards : movie.Awards || '',
-      image : movie.Poster,
-      //production : movie.Production
-    }));
+      if (!response.ok) {
+        throw new Error('oh crap')
+      }
 
-   console.log(movieData)
+      const { Search } = await response.json();   // "Search" is the inner object inside the returned respobse object
 
-//return false;
+      const movieData = Search.map((movie) => ({
+        movieId: movie.imdbID,
+        type: movie.Type,
+        title: movie.Title,
+        year: movie.Year,
+        image: movie.Poster,
+      }));
+
+      console.log(movieData)
 
       setSearchedMovies(movieData);
-      setSearchInput('');
+      setSearchedInput(searchInput)
+
     } catch (err) {
       console.error(err);
     }
@@ -94,23 +67,17 @@ const SearchMovies = () => {
     // find the movie in `searchedMovies` state by the matching id
     const movieToSave = searchedMovies.find((movie) => movie.movieId === movieId);
 
-    // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-    //console.log("token :" + token);
 
     if (!token) {
       return false;
     }
-    //console.log("movieId : " + movieId);
-   // console.log("tosave-rec: " + movieToSave.movieId+ " - " +movieToSave.title+ " - " +movieToSave.image+ " - " +movieToSave.year);
 
     try {
-      //const response = await saveMovie(movieToSave, token);
       const { data } = await saveMovie({
-        variables:{ movieData: {...movieToSave} },
+        variables: { movieData: { ...movieToSave } },
       });
 
-     // if (!response.ok) {
       if (!data) {
         throw new Error('something went wrong while saving movie!');
       }
@@ -123,10 +90,81 @@ const SearchMovies = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-info'>
-        <Container>
-          <h1>Search for movies!</h1>
+      <div className="carousel-slide">
+        <Carousel className="viewed-imgs">
+          <Carousel.Item className="item">
+            <img
+              className="d-block w-100"
+              src="https://cdn.pixabay.com/photo/2016/11/15/07/09/photo-manipulation-1825450_1280.jpg"
+              alt="First slide"
+            />
+            <Container>
+              <Carousel.Caption className="caption">
+                <h1>Movie Mania</h1>
+                <p>Entertainment Unplugged...</p>
+              </Carousel.Caption>
+
+            </Container>
+
+          </Carousel.Item>
+
+          <Carousel.Item className="item">
+            <img
+              className="d-block w-100"
+              src="https://cdn.pixabay.com/photo/2016/04/14/13/06/landscape-1328858_1280.jpg"
+              alt="Second slide"
+            />
+
+            <Container>
+              <Carousel.Caption className="caption">
+                <h1>Movie Mania</h1>
+                <p>Rediscover entertainment in a new dimension</p>
+              </Carousel.Caption>
+            </Container>
+
+          </Carousel.Item>
+
+          <Carousel.Item className="item">
+            <img
+              className="d-block w-100"
+              src="https://cdn.pixabay.com/photo/2017/09/04/09/37/cinema-strip-2713352_1280.jpg"
+              alt="Third slide"
+            />
+
+            <Container>
+              <Carousel.Caption className="caption">
+                <h1>Movie Mania</h1>
+                <p>Entertainment at your doorstep</p>
+              </Carousel.Caption>
+            </Container>
+
+          </Carousel.Item>
+
+          <Carousel.Item className="item">
+            <img
+              className="d-block w-100"
+              src="https://cdn.pixabay.com/photo/2017/09/04/09/37/cinema-strip-2713352_1280.jpg"
+              alt="Fourth slide"
+            />
+
+            <Container>
+              <Carousel.Caption className="caption">
+                <h1>Movie Mania</h1>
+                <p>Entertainment at your doorstep</p>
+              </Carousel.Caption>
+            </Container>
+
+          </Carousel.Item>
+
+
+
+        </Carousel>
+        <Container className="searchform">
           <Form onSubmit={handleFormSubmit}>
+            <h3>{searchedMovies.length
+              ? `Viewing ${searchedMovies.length} results for ${searchedInput}`
+              : 'Search for a movie to begin...'}
+            </h3>
             <Form.Row>
               <Col xs={12} md={8}>
                 <Form.Control
@@ -139,21 +177,18 @@ const SearchMovies = () => {
                 />
               </Col>
               <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
+                <Button type='submit' variant='info' size='lg'>
                   Submit Search
                 </Button>
               </Col>
             </Form.Row>
           </Form>
         </Container>
-      </Jumbotron>
+
+
+      </div>
 
       <Container>
-        <h2>
-          {searchedMovies.length
-            ? `Viewing ${searchedMovies.length} results:`
-            : 'Search for a movie to begin'}
-        </h2>
         <CardColumns>
           {searchedMovies.map((movie) => {
             return (
@@ -162,9 +197,9 @@ const SearchMovies = () => {
                   <Card.Img className="image" src={movie.image} alt={`The cover for ${movie.title}`} variant='top' />
                 ) : null}
                 <Card.Body>
-                  <Card.Title className="movietitle">{movie.title}</Card.Title>   
+                  <Card.Title className="movietitle">{movie.title}</Card.Title>
                   <p className='small'>  Year : {movie.year}</p>
-                  
+
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedMovieIds?.some((savedMovieId) => savedMovieId === movie.movieId)}
@@ -178,8 +213,8 @@ const SearchMovies = () => {
 
                 </Card.Body>
                 <Button className="readmorebtn">
-                    <Link className="link" to={{pathname: `/detail/${movie.movieId}`}} >Read More</Link>
-                    </Button> 
+                  <Link className="link" to={{ pathname: `/detail/${movie.movieId}` }} >Read More</Link>
+                </Button>
               </Card>
             );
           })}

@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import '../css/userlogin.css';
-//import { createUser } from '../utils/API';
-/// new line
 import { useMutation } from '@apollo/client';
-// Import the GraphQL mutation
 import { ADD_USER } from '../utils/mutations';
-// new line end
 
 import Auth from '../utils/auth';
 
@@ -17,10 +13,10 @@ const SignupForm = () => {
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
-  // new lines
+  
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_PROFILE mutation
   const [addUser] = useMutation(ADD_USER);
-  // new line end
+  
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -30,7 +26,7 @@ const SignupForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
+    
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();

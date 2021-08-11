@@ -1,4 +1,65 @@
- .movietitle {
+:root {
+    --primary: #fff;
+    --others: #5a5a5a;
+    --new: #bbb;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    padding-bottom: 40px;
+    background-color: var(--new);
+
+}
+.carousel-slide {
+    position: relative;
+    height: 100%;
+    width: 100%; 
+    margin-bottom: 60px;
+}
+
+.viewed-imgs {
+    height: fit-content;
+}
+
+.caption{
+    z-index: 10;
+}
+
+.item {
+    height: 500px;
+    background-color:#bbb;
+    overflow:hidden;
+    top:50%;
+}
+
+.item h1  {
+    text-align: center;
+    padding-bottom: 11rem;
+}
+.img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 500px;
+}
+
+.searchform {
+    /* position: absolute; */
+  	top:50%;
+    left:25%;
+}
+
+Form h3 {
+    color: #fff;
+    font-size: 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    letter-spacing: 3px;
+}
+
+.movietitle {
      font-size: 30px;
  }
 
@@ -34,5 +95,7 @@
 
 .link {
     color: white;
-
 }
+
+
+  
