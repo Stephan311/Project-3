@@ -60,8 +60,8 @@ const AppNavbar = () => {
         
               {/* </NavDropdown> */}
 
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="movies">Movies</Nav.Link>
+              {/* <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="movies">Movies</Nav.Link> */}
 
             
               {Auth.loggedIn() ? (

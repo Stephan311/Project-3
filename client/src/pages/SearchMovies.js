@@ -22,6 +22,7 @@ const SearchMovies = () => {
   const [searchedMovies, setSearchedMovies] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
+  const [searchedInput, setSearchedInput] = useState('');
 
   // create state to hold saved MovieId values
   const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
@@ -84,7 +85,8 @@ const SearchMovies = () => {
 //return false;
 
       setSearchedMovies(movieData);
-      setSearchInput('');
+      setSearchedInput(searchInput)
+      
     } catch (err) {
       console.error(err);
     }
@@ -190,10 +192,13 @@ const SearchMovies = () => {
 
           </Carousel.Item>
 
-          <Container className="searchform">
+          
+
+        </Carousel>
+        <Container className="searchform">
           <Form onSubmit={handleFormSubmit}>
             <h3>{searchedMovies.length
-            ? `Viewing ${searchedMovies.length} results:`
+            ? `Viewing ${searchedMovies.length} results for ${searchedInput}`
             : 'Search for a movie to begin...'}  
             </h3>
             <Form.Row>
@@ -215,8 +220,6 @@ const SearchMovies = () => {
             </Form.Row>
           </Form>
         </Container>
-
-        </Carousel>
         
         
       </div>
