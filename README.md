@@ -16,12 +16,18 @@
 * So i can find the one that i'm interested in to either save for later or watch.
 
 ## DEMO 
-<img width="1440" alt="Screen Shot 2021-08-05 at 7 44 17 PM" src="https://user-images.githubusercontent.com/78707812/128435411-ec7c52a6-e542-417d-82a3-93d7f3d73818.png">  
-<img width="1440" alt="Screen Shot 2021-08-05 at 7 44 34 PM" src="https://user-images.githubusercontent.com/78707812/128436528-5412aa05-3582-4272-899e-6ae95353ca87.png">
+<img width="1440" alt="Screen Shot 2021-08-07 at 10 00 39 AM" src="https://user-images.githubusercontent.com/78707812/128602864-1000bc74-670e-4b90-a302-967597c8d8fc.png">
 
-<img width="1440" alt="Screen Shot 2021-08-05 at 7 45 06 PM" src="https://user-images.githubusercontent.com/78707812/128436563-06052dde-51ec-472d-b6f4-44bf47a3043d.png">
+<img width="1440" alt="Screen Shot 2021-08-07 at 10 00 53 AM" src="https://user-images.githubusercontent.com/78707812/128602927-94f0bf1e-3efa-439b-869c-dc8ff5f2eb51.png">
 
-<img width="1440" alt="Screen Shot 2021-08-05 at 7 45 21 PM" src="https://user-images.githubusercontent.com/78707812/128436596-2844256c-ec6b-4c76-baf7-864bfd5cc54f.png">
+<img width="1440" alt="Screen Shot 2021-08-07 at 10 01 13 AM" src="https://user-images.githubusercontent.com/78707812/128602938-4b40d460-de7d-4ed6-b1e3-b61892fa33c0.png">
+
+<img width="1440" alt="Screen Shot 2021-08-07 at 10 01 31 AM" src="https://user-images.githubusercontent.com/78707812/128602958-f0f81b61-81ba-4bb7-84b2-43993c6d26c9.png">
+
+
+
+
+
 
 ### TECHNOLOGY USED 
 * Made use of React for the Front end 

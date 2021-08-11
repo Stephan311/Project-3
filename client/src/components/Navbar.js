@@ -48,7 +48,7 @@ const AppNavbar = () => {
 
                   <Nav.Link href="/saved" style={{ color: '#078080' }}>My Movies</Nav.Link>
 
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  <Nav.Link onClick={Auth.logout} style= {{color:'white'}}>Logout</Nav.Link>
                 </>
               ) : (
                 <Nav.Link onClick={() => setShowModal(true)} style={{ color: '#078080' }}>Login/Sign Up</Nav.Link>
