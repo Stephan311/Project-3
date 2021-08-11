@@ -11,7 +11,8 @@ const Wishlist = () => {
             <h2 className="dh">Wishlist</h2>
         </Container>
 
-    )}
+    )
+}
 
 
 export default Wishlist;

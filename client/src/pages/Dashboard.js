@@ -11,7 +11,8 @@ const Dashboard = () => {
             <h2 className="dh">Dashboard</h2>
         </Container>
 
-    )}
+    )
+}
 
 
 export default Dashboard;

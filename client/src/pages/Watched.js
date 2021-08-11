@@ -7,11 +7,9 @@ const Watched = () => {
     return (
 
         <Container>
-
             <h2 className="dh">Watched Movies</h2>
         </Container>
 
     )}
-
 
 export default Watched;
